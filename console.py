@@ -98,6 +98,6 @@ based on the class name and id """
         """ Documentation for postloop command """
         print(""" Ensures a newline after the program is exited """)
 
-    
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
