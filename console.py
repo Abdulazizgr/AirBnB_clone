@@ -47,6 +47,34 @@ when empty line + ENTER is pressed", ]))
         print("It creates a instance of the BaseModel, save it \
 and use it print the id of the Basemodel")
 
+    def do_show(self, line):
+        """ Prints the string representation of an instance \
+based on the class name and id """
+        args = shlex.split(line)
+        if len(args) == 0:
+            print("** class name missing **")
+            return
+        if len(args) < 2:
+            print("** instance id missing **")
+            return
+
+        class_name = args[0]
+        instance_id = args[1]
+
+        if class_name in HBNBCommand.class_mapping:
+            instance_val = '{}.{}'.format(class_name, instance_id)
+            objects_all = models.storage.all()
+
+            if instance_val in objects_all.keys():
+                obj = objects_all[instance_all]
+                print(obj)
+            else:
+                print("** no instance found **")
+        else:
+            print("** class doesn't exist **")
+    def help_show(self):
+        """ Documentation for show command """
+    
     def do_quit(self, line):
         """ Quit command to exit the pogram """
         exit()
@@ -57,6 +85,7 @@ and use it print the id of the Basemodel")
 
     def do_EOF(self, line):
         """ End of File, Ctrl+C && Ctrl+D """
+        print()
         return True
 
     def help_EOF(self):
@@ -64,14 +93,5 @@ and use it print the id of the Basemodel")
         print("\n".join(["Ctrl+C: KeyboardInterrupt that exit program",
                          "Ctrl+D: End the program"]))
 
-    def postloop(self):
-        """ Overrides the end of the loop """
-        print()
-
-    def help_postloop(self):
-        """ Documentation for postloop command """
-        print(""" Ensures a newline after the program is exited """)
-
-    
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
