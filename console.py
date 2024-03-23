@@ -50,7 +50,28 @@ and use it print the id of the Basemodel")
     def do_show(self, line):
         """ Prints the string representation of an instance \
 based on the class name and id """
-        
+        args = shlex.split(line)
+        if len(args) == 0:
+            print("** class name missing **")
+            return
+        if len(args) < 2:
+            print("** instance id missing **")
+            return
+
+        class_name = args[0]
+        instance_id = args[1]
+
+        if class_name in HBNBCommand.class_mapping:
+            instance_val = '{}.{}'.format(class_name, instance_id)
+            objects_all = models.storage.all()
+
+            if instance_val in objects_all.keys():
+                obj = objects_all[instance_all]
+                print(obj)
+            else:
+                print("** no instance found **")
+        else:
+            print("** class doesn't exist **")
 
     def do_quit(self, line):
         """ Quit command to exit the pogram """
