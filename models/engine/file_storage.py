@@ -45,7 +45,7 @@ class FileStorage:
         data_dict = {key: data[key].to_dict() for key in data.keys()}
 
         with open(file_path, "w", encoding="utf-8") as file:
-            json.dump(data_dct, file)
+            json.dump(data_dict, file)
 
     def reload(self):
         """ Deserialization of json file to a python object """
