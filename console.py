@@ -75,14 +75,14 @@ based on the class name and id """
 
     def help_show(self):
         """ Documentation for show command """
-    
+
     def do_quit(self, line):
         """ Quit command to exit the pogram """
         exit()
 
     def help_quit(self):
         """ Documentation for the quit command"""
-        print("Quit command to exit the pogram")
+        print("Quit command to exit the pogram\n")
 
     def do_EOF(self, line):
         """ End of File, Ctrl+C && Ctrl+D """
@@ -93,6 +93,7 @@ based on the class name and id """
         """ Documentation for EOF command """
         print("\n".join(["Ctrl+C: KeyboardInterrupt that exit program",
                          "Ctrl+D: End the program"]))
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
