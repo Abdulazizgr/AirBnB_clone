@@ -72,6 +72,7 @@ based on the class name and id """
                 print("** no instance found **")
         else:
             print("** class doesn't exist **")
+
     def help_show(self):
         """ Documentation for show command """
     
@@ -81,7 +82,7 @@ based on the class name and id """
 
     def help_quit(self):
         """ Documentation for the quit command"""
-        print("Exit the program cleanly when quit is entered")
+        print("Quit command to exit the pogram")
 
     def do_EOF(self, line):
         """ End of File, Ctrl+C && Ctrl+D """
