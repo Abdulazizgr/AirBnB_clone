@@ -72,7 +72,9 @@ based on the class name and id """
                 print("** no instance found **")
         else:
             print("** class doesn't exist **")
-
+    def help_show(self):
+        """ Documentation for show command """
+    
     def do_quit(self, line):
         """ Quit command to exit the pogram """
         exit()
@@ -83,21 +85,13 @@ based on the class name and id """
 
     def do_EOF(self, line):
         """ End of File, Ctrl+C && Ctrl+D """
+        print()
         return True
 
     def help_EOF(self):
         """ Documentation for EOF command """
         print("\n".join(["Ctrl+C: KeyboardInterrupt that exit program",
                          "Ctrl+D: End the program"]))
-
-    def postloop(self):
-        """ Overrides the end of the loop """
-        print()
-
-    def help_postloop(self):
-        """ Documentation for postloop command """
-        print(""" Ensures a newline after the program is exited """)
-
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
