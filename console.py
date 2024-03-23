@@ -47,6 +47,11 @@ when empty line + ENTER is pressed", ]))
         print("It creates a instance of the BaseModel, save it \
 and use it print the id of the Basemodel")
 
+    def do_show(self, line):
+        """ Prints the string representation of an instance \
+based on the class name and id """
+        
+
     def do_quit(self, line):
         """ Quit command to exit the pogram """
         exit()
