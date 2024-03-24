@@ -2,6 +2,7 @@
 """ Unittest file for base_model module """
 from models.base_model import BaseModel
 import unittest
+import os
 
 
 class TestBaseModel(unittest.TestCase):
@@ -12,7 +13,9 @@ class TestBaseModel(unittest.TestCase):
         self.my_model = BaseModel()
 
     def tearDown(self):
-        """ Helps to clean up methods """
+        """ Helps to clean up files """
+        if os.path.exists("file.json"):
+            os.remove("file.json")
 
     def test_str(self):
         """ Test the string representation """
