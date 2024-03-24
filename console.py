@@ -133,8 +133,9 @@ and use it print the id of the Basemodel")
                 all_obj_list.append(str(object))
             print(all_obj_list)
             return
+
         for object in all_objects.values():
-            if type(object).__name__ = class_name:
+            if type(object).__name__ == class_name:
                 obj_list.append(str(object))
             print(obj_list)
 
@@ -161,7 +162,7 @@ and use it print the id of the Basemodel")
             print("** instance id missing **")
             return
 
-        if class_name not in HBNBCommand.values():
+        if class_name not in HBNBCommand.class_maps:
             print("** class doesn't exist **")
             return
 
@@ -182,6 +183,7 @@ and use it print the id of the Basemodel")
         attr_type = type(eval(attr_val))
         if attr_type not in (str, float, int):
             return
+
         setattr(objects_all[instance_val], attr_name, eval(attr_val))
         models.storage.save()
 
