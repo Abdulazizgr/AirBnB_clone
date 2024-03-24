@@ -68,7 +68,7 @@ and use it print the id of the Basemodel")
             objects_all = models.storage.all()
 
             if instance_val in objects_all.keys():
-                obj = objects_all[instance_all]
+                obj = objects_all[instance_val]
                 print(obj)
             else:
                 print("** no instance found **")
@@ -148,12 +148,10 @@ and use it print the id of the Basemodel")
 
     def do_update(self, line):
         """ Updates an instance based on the class name and id """
-        args = shlex.split(line)
+        args = line.split()
 
         class_name = args[0]
         instance_id = args[1]
-        attr_name = args[2]
-        attr_val = args[3]
 
         if len(args) == 0:
             print("** class name missing **")
@@ -179,6 +177,9 @@ and use it print the id of the Basemodel")
         if len(args) < 4:
             print("** value missing **")
             return
+
+        attr_name = args[2]
+        attr_val = args[3]
 
         attr_type = type(eval(attr_val))
         if attr_type not in (str, float, int):
