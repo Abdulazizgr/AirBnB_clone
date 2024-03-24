@@ -2,7 +2,7 @@
 
 import uuid
 from datetime import datetime
-import models
+from models import storage 
 
 
 class BaseModel:
@@ -12,9 +12,9 @@ class BaseModel:
     Attributes:
         id (str): Unique identifier for the model.
         created_at (datetime): Timestamp indicating the creation
-        time of the model.
+        time.
         updated_at (datetime): Timestamp indicating the last update
-        time of the model.
+        time.
     """
 
     def __init__(self, *args, **kwargs):
@@ -36,7 +36,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-            models.storage.new(self)
+            storage.new(self)
 
     def __str__(self):
         """
@@ -50,7 +50,7 @@ class BaseModel:
         Updates the 'updated_at' attribute with the current timestamp.
         """
         self.updated_at = datetime.now()
-        models.storage.save()
+        storage.save()
 
     def to_dict(self):
         """
