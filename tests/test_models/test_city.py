@@ -10,7 +10,7 @@ class TestCity(unittest.TestCase):
 
     def setUp(self):
         """ Creating an object of the class """
-        self.my_model = city()
+        self.my_model = City()
 
     def tearDown(self):
         """ Method to clean up """
@@ -19,8 +19,8 @@ class TestCity(unittest.TestCase):
 
     def test_type(self):
         """ Testing the tye of attribute """
-        self.assertInstance(self.my_model.id, str)
-        self.assertInstance(self.my_model.name, str)
-        self.assertInstance(self.my_model.state_id, str)
-        self.assertInstance(self.my_model.created_at, datetime)
-        self.assertInstance(self.my_model.updated_at, datetime)
+        self.assertIsInstance(self.my_model.id, str)
+        self.assertIsInstance(self.my_model.name, str)
+        self.assertIsInstance(self.my_model.state_id, str)
+        self.assertIsInstance(self.my_model.created_at, datetime)
+        self.assertIsInstance(self.my_model.updated_at, datetime)

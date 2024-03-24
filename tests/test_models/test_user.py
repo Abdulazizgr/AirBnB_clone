@@ -19,10 +19,10 @@ class TestUser(unittest.TestCase):
 
     def test_type(self):
         """ Check and assert the instance type """
-        self.assertInstance(self.my_model.id, str)
-        self.assertInstance(self.my_model.email, str)
-        self.assertInstance(self.my_model.password, str)
-        self.assertInstance(self.my_model.first_name, str)
-        self.assertInstance(self.my_model.last_name, str)
-        self.assertInstance(self.my_model.created_at, datetime)
-        self.assertInstance(self.my_model.updated_at, datetime)
+        self.assertIsInstance(self.my_model.id, str)
+        self.assertIsInstance(self.my_model.email, str)
+        self.assertIsInstance(self.my_model.password, str)
+        self.assertIsInstance(self.my_model.first_name, str)
+        self.assertIsInstance(self.my_model.last_name, str)
+        self.assertIsInstance(self.my_model.created_at, datetime)
+        self.assertIsInstance(self.my_model.updated_at, datetime)
