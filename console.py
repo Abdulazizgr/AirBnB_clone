@@ -79,7 +79,7 @@ and use it print the id of the Basemodel")
         """ Documentation for show command """
         print("\n".join([
             "Usage: show [class_name][id]",
-            "Prints the string representation of an instance"
+            "Prints the string representation of an instance",
             "Based on the class name and id"]))
 
     def do_destroy(self, line):
@@ -111,21 +111,15 @@ and use it print the id of the Basemodel")
     def help_destroy(self):
         """ Documentation for destroy command """
         print("\n".join([
-            "Usage: destroy [class_name] [id]"
-            "Deletes an instance based on the class name and id"
+            "Usage: destroy [class_name] [id]",
+            "Deletes an instance based on the class name and id",
             "Save the change into the JSON file"]))
 
     def do_all(self, line):
         """ Prints all string representation of all instances """
         args = shlex.split(line)
 
-        class_name = args[0]
-        if class_name not in HBNBCommand.class_maps:
-            print("** class doesn't exist **")
-            return
-
         all_objects = models.storage.all()
-        obj_list = []
         all_obj_list = []
 
         if not line:
@@ -134,6 +128,12 @@ and use it print the id of the Basemodel")
             print(all_obj_list)
             return
 
+        class_name = args[0]
+        if class_name not in HBNBCommand.class_maps:
+            print("** class doesn't exist **")
+            return
+
+        obj_list = []
         for object in all_objects.values():
             if type(object).__name__ == class_name:
                 obj_list.append(str(object))
@@ -142,8 +142,8 @@ and use it print the id of the Basemodel")
     def help_all(self):
         """ Documentation of all command """
         print("\n".join([
-            "Usage: all [class_name] or all"
-            "Prints all string representation of all instances"
+            "Usage: all [class_name] or all",
+            "Prints all string representation of all instances",
             "Based or not on the class name."]))
 
     def do_update(self, line):
@@ -191,9 +191,9 @@ and use it print the id of the Basemodel")
     def help_update(self):
         """ Documentation for the update command """
         print("\n".join([
-            "Usage: update [class_name] [id] [attr_name] [attr_value]"
+            "Usage: update [class_name] [id] [attr_name] [attr_value]",
             "Updates an instance based on the class name and id"
-            "By adding or updating attribute"
+            "by adding or updating attribute",
             "Then save the change into the JSON file"]))
 
     def do_quit(self, line):
