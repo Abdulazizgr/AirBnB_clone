@@ -48,8 +48,10 @@ when empty line + ENTER is pressed", ]))
 and use it print the id of the Basemodel")
 
     def do_show(self, line):
-        """ Prints the string representation of an instance \
-based on the class name and id """
+        """ Prints the string representation of an instance
+            based on the class name and id
+        """
+
         args = shlex.split(line)
         if len(args) == 0:
             print("** class name missing **")
@@ -61,7 +63,7 @@ based on the class name and id """
         class_name = args[0]
         instance_id = args[1]
 
-        if class_name in HBNBCommand.class_mapping:
+        if class_name in HBNBCommand.class_maps:
             instance_val = '{}.{}'.format(class_name, instance_id)
             objects_all = models.storage.all()
 
@@ -75,6 +77,121 @@ based on the class name and id """
 
     def help_show(self):
         """ Documentation for show command """
+        print("\n".join([
+            "Usage: show [class_name][id]",
+            "Prints the string representation of an instance"
+            "Based on the class name and id"]))
+
+    def do_destroy(self, line):
+        """ Deletes an instance based on the class name and id """
+        args = shlex.split(line)
+
+        if len(args) == 0:
+            print("** class name missing **")
+            return
+        if len(args) < 2:
+            print("** instance id missing **")
+            return
+
+        class_name = args[0]
+        instance_id = args[1]
+
+        if class_name in HBNBCommand.class_maps:
+            instance_val = '{}.{}'.format(class_name, instance_id)
+            objects_all = models.storage.all()
+
+            if instance_val in objects_all.keys():
+                del models.storage.all()[instance_val]
+                models.storage.save()
+            else:
+                print("** no instance found **")
+        else:
+            print("** class doesn't exist **")
+
+    def help_destroy(self):
+        """ Documentation for destroy command """
+        print("\n".join([
+            "Usage: destroy [class_name] [id]"
+            "Deletes an instance based on the class name and id"
+            "Save the change into the JSON file"]))
+
+    def do_all(self, line):
+        """ Prints all string representation of all instances """
+        args = shlex.split(line)
+
+        class_name = args[0]
+        if class_name not in HBNBCommand.class_maps:
+            print("** class doesn't exist **")
+            return
+
+        all_objects = models.storage.all()
+        obj_list = []
+        all_obj_list = []
+
+        if not line:
+            for object in all_objects.values():
+                all_obj_list.append(str(object))
+            print(all_obj_list)
+            return
+        for object in all_objects.values():
+            if type(object).__name__ = class_name:
+                obj_list.append(str(object))
+            print(obj_list)
+
+    def help_all(self):
+        """ Documentation of all command """
+        print("\n".join([
+            "Usage: all [class_name] or all"
+            "Prints all string representation of all instances"
+            "Based or not on the class name."]))
+
+    def do_update(self, line):
+        """ Updates an instance based on the class name and id """
+        args = shlex.split(line)
+
+        class_name = args[0]
+        instance_id = args[1]
+        attr_name = args[2]
+        attr_val = args[3]
+
+        if len(args) == 0:
+            print("** class name missing **")
+            return
+        if len(args) < 2:
+            print("** instance id missing **")
+            return
+
+        if class_name not in HBNBCommand.values():
+            print("** class doesn't exist **")
+            return
+
+        instance_val = '{}.{}'.format(class_name, instance_id)
+        objects_all = models.storage.all()
+
+        if instance_val not in objects_all.keys():
+            print("** no instance found **")
+            return
+
+        if len(args) < 3:
+            print("** attribute name missing **")
+            return
+        if len(args) < 4:
+            print("** value missing **")
+            return
+
+        attr_type = type(eval(attr_val))
+        if attr_type not in (str, float, int):
+            return
+        setattr(objects_all[instance_val], attr_name, eval(attr_val))
+        models.storage.save()
+
+    def help_update(self):
+        """ Documentation for the update command """
+        print("\n".join([
+            "Usage: update [class_name] [id] [attr_name] [attr_value]"
+            "Updates an instance based on the class name and id"
+            "By adding or updating attribute"
+            "Then save the change into the JSON file"]))
 
     def do_quit(self, line):
         """ Quit command to exit the pogram """
@@ -82,7 +199,7 @@ based on the class name and id """
 
     def help_quit(self):
         """ Documentation for the quit command"""
-        print("Quit command to exit the pogram\n")
+        print("Exit the program cleanly when quit is entered")
 
     def do_EOF(self, line):
         """ End of File, Ctrl+C && Ctrl+D """
