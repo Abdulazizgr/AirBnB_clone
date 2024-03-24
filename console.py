@@ -153,19 +153,19 @@ and use it print the id of the Basemodel")
         """ Updates an instance based on the class name and id """
         args = line.split()
 
-        class_name = args[0]
-        instance_id = args[1]
-
         if len(args) == 0:
             print("** class name missing **")
             return
-        if len(args) < 2:
-            print("** instance id missing **")
-            return
+        class_name = args[0]
 
         if class_name not in HBNBCommand.class_maps:
             print("** class doesn't exist **")
             return
+
+        if len(args) < 2:
+            print("** instance id missing **")
+            return
+        instance_id = args[1]
 
         instance_val = '{}.{}'.format(class_name, instance_id)
         objects_all = models.storage.all()
