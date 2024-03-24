@@ -89,11 +89,16 @@ and use it print the id of the Basemodel")
         if len(args) == 0:
             print("** class name missing **")
             return
+
+        class_name = args[0]
+        if class_name not in HBNBCommand.class_maps:
+            print("** class doesn't exist **")
+            return
+
         if len(args) < 2:
             print("** instance id missing **")
             return
 
-        class_name = args[0]
         instance_id = args[1]
 
         if class_name in HBNBCommand.class_maps:
@@ -105,8 +110,6 @@ and use it print the id of the Basemodel")
                 models.storage.save()
             else:
                 print("** no instance found **")
-        else:
-            print("** class doesn't exist **")
 
     def help_destroy(self):
         """ Documentation for destroy command """
