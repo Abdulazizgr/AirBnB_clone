@@ -1,4 +1,4 @@
-#!/usr/bin//python3
+#!/usr/bin/python3
 """
     FileStorage module that helps to maintain persistency
 """
