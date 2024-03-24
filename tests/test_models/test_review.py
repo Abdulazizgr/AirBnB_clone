@@ -10,7 +10,7 @@ class TestReview(unittest.TestCase):
 
     def setUp(self):
         """ Creating an object of the class """
-        self.my_model = User()
+        self.my_model = Review()
 
     def tearDown(self):
         """ Method to clean up """
