@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """ Unittest for the User class file """
 from models.user import User
 import unittest
