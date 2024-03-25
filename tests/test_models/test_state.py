@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """ Unit test for State class """
 from models.state import State
 import unittest
