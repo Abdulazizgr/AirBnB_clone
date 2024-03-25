@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """ Unit test for Review class """
 from models.review import Review
 import unittest
