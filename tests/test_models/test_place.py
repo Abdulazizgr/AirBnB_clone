@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """ Place test for State class """
 from models.place import Place
 import unittest
